@@ -1,10 +1,10 @@
-import "../css/Home.css"
+import styles from "../css/Home.module.css"
 const Home = () =>{
 
     return (
-        <div className="HomePage">
+        <div className={styles.HomePage}>
             <h1 className="">this is the home page</h1>
-            <div className="sidebar">
+            <div className={styles.sidebar}>
                 <ul>
                     <li>Heading 1</li>
                     <li>Heading 2</li>
