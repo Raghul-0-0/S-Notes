@@ -1,7 +1,15 @@
+import { GoogleLogin } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 const LandingPage = () => {
+
+    const navigate = useNavigate()
+
     return (
         <>
-        <h1>This is the Landing Page</h1>
+            <GoogleLogin onSuccess={(CredentialResponse) => {
+                console.log(CredentialResponse)
+                navigate("/home")
+            }} onError={() => console.log("Login Failed")}/>
         </>
     )
 }
