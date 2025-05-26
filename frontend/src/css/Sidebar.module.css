@@ -1,0 +1,11 @@
+.sidebar{
+    background-color: blanchedalmond;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 100vh;
+    min-width: 10vw;
+    max-width: 35vw;
+    resize:horizontal;
+    overflow: auto;
+}

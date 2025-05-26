@@ -5,21 +5,8 @@
     background-color: #1C1C1E;
 }
 
-.text{
-    color : #E5E5EA;
-}
 
-.sidebar{
-    background-color: blanchedalmond;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    height: 100vh;
-    min-width: 10vw;
-    max-width: 35vw;
-    resize:horizontal;
-    overflow: auto;
-}
+
 
 .content{
     flex:1;
