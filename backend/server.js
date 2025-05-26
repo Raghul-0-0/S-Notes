@@ -1,35 +1,22 @@
-const express = require('express')
-const { OAuth2Client } = require('google-auth-library')
-require('dotenv').config() 
+require('dotenv').config();
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const PORT = process.env.PORT ;
+const DB_STRING = process.env.DB_URL;
 
-const app = express()
-const client = new OAuth2Client(process.env.VITE_G_CLIENT_ID)
+// connect to DB
+app.use(express.json());
 
-app.use(express.json()) 
+mongoose
+.connect(DB_STRING)
+.then( ()=> {console.log("Connected to database :", mongoose.connection.name)})
+.catch( (err)=>{console.log(err)})
 
-const cors = require('cors')
-app.use(cors())
+const authRoutes = require("./src/routers/authRouter");
+app.use("/api/auth/google", authRoutes);
 
-app.post('/api/auth/google', async (req, res) => {
-  try {
-    const { idToken } = req.body
 
-    const ticket = await client.verifyIdToken({
-      idToken,
-      audience: process.env.VITE_G_CLIENT_ID, 
-    })
-
-    const payload = ticket.getPayload()
-    console.log(payload);
-
-    res.json({ success: true, user: payload })
-
-  } catch (err) {
-    console.error('Token verification failed:', err)
-    res.status(401).json({ success: false, message: 'Invalid token' })
-  }
-})
-
-app.listen(5000, () => {
-  console.log('🚀 Server running on http://localhost:5000')
+app.listen(PORT, () => {
+    console.log(`running on port ${PORT}`);
 })
