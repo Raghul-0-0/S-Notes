@@ -6,7 +6,6 @@ const PORT = process.env.PORT ;
 const DB_STRING = process.env.DB_URL;
 const noteRoutes = require("../src/routes/noteRoutes")
 
-// connect to DB
 app.use(express.json());
 
 mongoose
@@ -15,9 +14,15 @@ mongoose
 .catch( (err)=>{console.log(err)})
 
 app.use("/api/notes",noteRoutes)
-
+const authRoutes = require("./src/routers/authRouter");
+app.use("/api/auth/google", authRoutes);
 
 app.listen(PORT, () => {
     console.log(`running on port ${PORT}`);
 })
   
+
+
+
+
+
