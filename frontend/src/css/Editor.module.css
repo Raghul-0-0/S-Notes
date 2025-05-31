@@ -1,3 +1,23 @@
 .text{
     color : #E5E5EA;
 }
+
+.newNoteButton{
+    border: double;
+    border-color: black;
+        padding-left: 4px;
+
+}
+
+.closeNoteButton{
+    border: double;
+    border-color: black;
+    
+}
+
+
+.saveNoteButton{
+    border: double;
+    border-color: black;
+    
+}
